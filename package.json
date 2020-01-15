@@ -1,6 +1,6 @@
 {
 	"name": "zax-files",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"description": "zax-files",
 	"main": "./libs/cjs",
 	"sideEffects": false,
