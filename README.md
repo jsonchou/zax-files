@@ -1,4 +1,4 @@
-# Zax Url
+# Zax Files
 ## support SSR & Miniprogram & Browser side
 
 [![NPM version](https://img.shields.io/npm/v/zax-files.svg?style=flat)](https://www.npmjs.com/package/zax-files)
