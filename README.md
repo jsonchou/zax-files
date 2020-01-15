@@ -1,9 +1,9 @@
 # Zax Url
 ## support SSR & Miniprogram & Browser side
 
-[![NPM version](https://img.shields.io/npm/v/zax-url.svg?style=flat)](https://www.npmjs.com/package/zax-url)
-[![Build Status](https://travis-ci.org/jsonchou/zax-url.svg?branch=master)](https://travis-ci.org/jsonchou/zax-url)
-[![codecov](https://codecov.io/gh/jsonchou/zax-url/branch/master/graph/badge.svg)](https://codecov.io/gh/jsonchou/zax-url)
+[![NPM version](https://img.shields.io/npm/v/zax-files.svg?style=flat)](https://www.npmjs.com/package/zax-files)
+[![Build Status](https://travis-ci.org/jsonchou/zax-files.svg?branch=master)](https://travis-ci.org/jsonchou/zax-files)
+[![codecov](https://codecov.io/gh/jsonchou/zax-files/branch/master/graph/badge.svg)](https://codecov.io/gh/jsonchou/zax-files)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 util module
@@ -17,19 +17,19 @@ util module
 ## Install
 
 ~~~ base
-npm i zax-url -S
+npm i zax-files -S
 ~~~
 
 ## Usage
 
 ~~~ javascript
-const zaxUrl = require('zax-url')
+const zaxFiles = require('zax-files')
 or
-import zaxUrl, { parse, get, set, del, search, hash, pathKey, basename, extname, pathmain } from 'zax-url'
+import zaxFiles, { loadScripts, loadStyles } from 'zax-files'
 ~~~
 
-## [Docs](https://github.com/jsonchou/zax-url/tree/master/docs)
+## [Docs](https://github.com/jsonchou/zax-files/tree/master/docs)
 
-## [Test Case](https://github.com/jsonchou/zax-url/blob/master/__tests__/index.spec.ts)
+## [Test Case](https://github.com/jsonchou/zax-files/blob/master/__tests__/index.spec.ts)
 
 
