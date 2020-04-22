@@ -41,6 +41,7 @@
 	],
 	"files": [
 		"libs/*",
+		"src/*",
 		"types/*"
 	],
 	"repository": {
@@ -115,8 +116,5 @@
 			}
 		},
 		"collectCoverage": true
-	},
-	"dependencies": {
-		"striptags": "^3.1.1"
 	}
 }
