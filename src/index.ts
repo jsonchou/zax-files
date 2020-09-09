@@ -3,6 +3,13 @@
  * @module zaxFiles
  * @see https://github.com/jsonchou/zax-util/tree/master/docs/files
  */
+
+if (!String.prototype.startsWith) {
+	String.prototype.startsWith = function (search, pos) {
+		return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search
+	}
+}
+
 type Nothing = {} // jsdoc2md bugs, do not remove this line
 
 export type ScriptOptions = {
