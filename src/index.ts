@@ -53,7 +53,8 @@ function isFile(item: string) {
  */
 export function loadScripts(src: string | Array<string>, options?: ScriptOptions): Promise<(HTMLScriptElement | Error)[]> {
 	if (typeof document === 'undefined') {
-		return Promise.reject(new Error('env error'))
+		console.log(new Error('loadStyles cannot be run on the server side'));
+		return Promise.reject('env error')
 	}
 
 	let arr: Array<string> = []
@@ -138,7 +139,8 @@ type Nothing2 = {} // jsdoc2md bugs, do not remove this line
  */
 export function loadStyles(src: string | Array<string>, options?: StyleOptions): Promise<(Partial<HTMLElementMix> | Error)[]> {
 	if (typeof document === 'undefined') {
-		return Promise.reject(new Error('env error'))
+		console.log(new Error('loadStyles cannot be run on the server side'));
+		return Promise.reject('env error')
 	}
 
 	let opts = options || {}
