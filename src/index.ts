@@ -4,7 +4,20 @@
  * @see https://github.com/jsonchou/zax-util/tree/master/docs/files
  */
 
+ /* istanbul ignore next */
+if (!String.prototype.endsWith) {
+	/* istanbul ignore next */
+	String.prototype.endsWith = function (search, this_len) {
+		if (this_len === undefined || this_len > this.length) {
+			this_len = this.length;
+		}
+		return this.substring(this_len - search.length, this_len) === search;
+	};
+}
+
+/* istanbul ignore next */
 if (!String.prototype.startsWith) {
+	/* istanbul ignore next */
 	String.prototype.startsWith = function (search, pos) {
 		return this.substr(!pos || pos < 0 ? 0 : +pos, search.length) === search
 	}
@@ -14,7 +27,6 @@ type Nothing = {} // jsdoc2md bugs, do not remove this line
 
 export type ScriptOptions = {
 	type?: string
-	charset?: string
 	async?: boolean
 	media?: string //'screen' | 'tty' | 'tv' | 'projection' | 'handheld' | 'print' | 'braille' | 'aural' | 'all'
 	attrs?: Record<string, string>
@@ -31,7 +43,10 @@ type HTMLElementMix = Pick<HTMLLinkElement & HTMLStyleElement, 'rel' | 'media' |
 
 function isFile(item: string) {
 	// 不要用 .css .js 判断是否为文件类型
-	if (item.startsWith('//') || item.startsWith('https://') || item.startsWith('http://') || item.startsWith('../') || item.startsWith('./')) {
+	if (item.endsWith('.js')) {
+		return true
+	}
+	if (item.startsWith('https://') || item.startsWith('http://') || item.startsWith('../') || item.startsWith('./')) {
 		return true
 	}
 	return false
@@ -53,7 +68,7 @@ function isFile(item: string) {
  */
 export function loadScripts(src: string | Array<string>, options?: ScriptOptions): Promise<(HTMLScriptElement | Error)[]> {
 	if (typeof document === 'undefined') {
-		console.log(new Error('loadStyles cannot be run on the server side'));
+		console.log('loadStyles cannot be run on the server side');
 		return Promise.reject('env error')
 	}
 
@@ -76,7 +91,6 @@ export function loadScripts(src: string | Array<string>, options?: ScriptOptions
 				let head = document.head || document.getElementsByTagName('head')[0]
 				let script = document.createElement('script')
 				script.type = opts.type || 'text/javascript'
-				script.charset = opts.charset || 'utf8'
 				script.async = opts.async === false ? false : true
 
 				if (isFile(item)) {
@@ -139,7 +153,7 @@ type Nothing2 = {} // jsdoc2md bugs, do not remove this line
  */
 export function loadStyles(src: string | Array<string>, options?: StyleOptions): Promise<(Partial<HTMLElementMix> | Error)[]> {
 	if (typeof document === 'undefined') {
-		console.log(new Error('loadStyles cannot be run on the server side'));
+		console.log('loadStyles cannot be run on the server side');
 		return Promise.reject('env error')
 	}
 

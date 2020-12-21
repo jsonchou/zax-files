@@ -1,6 +1,10 @@
+/**
+ * Files module.
+ * @module zaxFiles
+ * @see https://github.com/jsonchou/zax-util/tree/master/docs/files
+ */
 export declare type ScriptOptions = {
     type?: string;
-    charset?: string;
     async?: boolean;
     media?: string;
     attrs?: Record<string, string>;

@@ -2,20 +2,20 @@
 	"name": "zax-files",
 	"version": "0.0.3",
 	"description": "zax-files",
-	"main": "./libs/cjs",
+	"main": "./lib/cjs",
 	"sideEffects": false,
 	"directories": {
 		"test": "test",
-		"lib": "libs",
+		"lib": "lib",
 		"doc": "docs"
 	},
-	"typings": "./libs/es/index.d.ts",
+	"typings": "./lib/es/index.d.ts",
 	"scripts": {
 		"lint": "eslint --ext .ts src/",
 		"lint:fix": "eslint --fix --ext .ts src/",
-		"build:cjs": "rimraf './libs/cjs' && tsc -t 'ES5' -m 'CommonJS' --outDir './libs/cjs' ",
-		"build:es": "rimraf './libs/es' && tsc -t 'ES6' -m 'ESNext' --outDir './libs/es' ",
-		"build:umd": "rimraf './libs/umd' && tsc -t 'ES5' -m 'UMD' --outDir './libs/umd' ",
+		"build:cjs": "rimraf './lib/cjs' && tsc -t 'ES5' -m 'CommonJS' --outDir './lib/cjs' ",
+		"build:es": "rimraf './lib/es' && tsc -t 'ES6' -m 'ESNext' --outDir './lib/es' ",
+		"build:umd": "rimraf './lib/umd' && tsc -t 'ES5' -m 'UMD' --outDir './lib/umd' ",
 		"doc:index": "rimraf './docs/*.md' && jsdoc2md --files ./src/index.ts --no-cache --configure ./jsdoc2md.json > ./docs/README.md",
 		"docs": "npm-run-all -p doc:**",
 		"build": "npm-run-all -p build:**",
@@ -31,7 +31,7 @@
 		"test": true,
 		"docs": true,
 		"cleanDirs": [
-			"libs/**",
+			"lib/**",
 			"docs/*/*.md"
 		]
 	},
@@ -40,7 +40,7 @@
 		"file Utils"
 	],
 	"files": [
-		"libs/*",
+		"lib/*",
 		"src/*",
 		"types/*"
 	],
@@ -105,7 +105,7 @@
 			"/build/",
 			"/types/",
 			"/test/",
-			"/libs/"
+			"/lib/"
 		],
 		"coverageThreshold": {
 			"global": {

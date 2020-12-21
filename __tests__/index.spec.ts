@@ -34,7 +34,6 @@ describe('zaxFiles', () => {
 
 		res = zaxFiles.loadScripts(['../__mocks__/a.js', '../__mocks__/b.js'], {
 			async: true,
-			charset: 'utf-8',
 			type: 'text/javascript',
 			attrs: {
 				id: 'myScript'
