@@ -30,7 +30,7 @@ declare type HTMLElementMix = Pick<HTMLLinkElement & HTMLStyleElement, 'rel' | '
  * @param options { ScriptOptions } script options
  * @returns  { Promise<HTMLScriptElement[]> } Promise value
  */
-export declare function loadScripts(src: string | Array<string>, options?: ScriptOptions): Promise<(HTMLScriptElement | Error)[]>;
+export declare function loadScripts(src: string | Array<string>, options?: ScriptOptions): Promise<(HTMLScriptElement | Error)[]> | void;
 /**
  * load styles
  *
@@ -45,7 +45,7 @@ export declare function loadScripts(src: string | Array<string>, options?: Scrip
  * @param options { StyleOptions } style options
  * @returns  { Array<Promise<Partial<HTMLElementMix> | Error>> } Promise value
  */
-export declare function loadStyles(src: string | Array<string>, options?: StyleOptions): Promise<(Partial<HTMLElementMix> | Error)[]>;
+export declare function loadStyles(src: string | Array<string>, options?: StyleOptions): Promise<(Partial<HTMLElementMix> | Error)[]> | void;
 declare const _default: {
     loadScripts: typeof loadScripts;
     loadStyles: typeof loadStyles;

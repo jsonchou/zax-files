@@ -4,7 +4,7 @@
  * @see https://github.com/jsonchou/zax-util/tree/master/docs/files
  */
 
- /* istanbul ignore next */
+/* istanbul ignore next */
 if (!String.prototype.endsWith) {
 	/* istanbul ignore next */
 	String.prototype.endsWith = function (search, this_len) {
@@ -66,10 +66,10 @@ function isFile(item: string) {
  * @param options { ScriptOptions } script options
  * @returns  { Promise<HTMLScriptElement[]> } Promise value
  */
-export function loadScripts(src: string | Array<string>, options?: ScriptOptions): Promise<(HTMLScriptElement | Error)[]> {
+export function loadScripts(src: string | Array<string>, options?: ScriptOptions): Promise<(HTMLScriptElement | Error)[]> | void {
 	if (typeof document === 'undefined') {
 		console.log('loadStyles cannot be run on the server side');
-		return Promise.reject('env error')
+		return
 	}
 
 	let arr: Array<string> = []
@@ -151,10 +151,10 @@ type Nothing2 = {} // jsdoc2md bugs, do not remove this line
  * @param options { StyleOptions } style options
  * @returns  { Array<Promise<Partial<HTMLElementMix> | Error>> } Promise value
  */
-export function loadStyles(src: string | Array<string>, options?: StyleOptions): Promise<(Partial<HTMLElementMix> | Error)[]> {
+export function loadStyles(src: string | Array<string>, options?: StyleOptions): Promise<(Partial<HTMLElementMix> | Error)[]> | void {
 	if (typeof document === 'undefined') {
 		console.log('loadStyles cannot be run on the server side');
-		return Promise.reject('env error')
+		return
 	}
 
 	let opts = options || {}

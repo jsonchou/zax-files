@@ -23,7 +23,7 @@ describe('zaxFiles', () => {
 	})
 
 	it(`should be correct loadScripts function`, async () => {
-		let res = zaxFiles.loadScripts(['../__mocks__/a.js', '../__mocks__/b.js'])
+		let res = zaxFiles.loadScripts(['../__mocks__/a.js', '../__mocks__/b.js']) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			console.log('loadScripts', info)
@@ -38,7 +38,7 @@ describe('zaxFiles', () => {
 			attrs: {
 				id: 'myScript'
 			}
-		})
+		}) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			console.log('loadScripts', info)
@@ -47,7 +47,7 @@ describe('zaxFiles', () => {
 			console.error(2222, err)
 		})
 
-		res = zaxFiles.loadScripts(['../__mocks__/a.js', '../__mocks__/b.js'], { async: false })
+		res = zaxFiles.loadScripts(['../__mocks__/a.js', '../__mocks__/b.js'], { async: false }) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			// console.log('loadScripts', info)
@@ -56,7 +56,7 @@ describe('zaxFiles', () => {
 			console.error(2222, err)
 		})
 
-		res = zaxFiles.loadScripts('../__mocks__/a.js')
+		res = zaxFiles.loadScripts('../__mocks__/a.js') as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			console.log(3333, info)
@@ -65,7 +65,7 @@ describe('zaxFiles', () => {
 			console.error(4444, err)
 		})
 
-		res = zaxFiles.loadScripts(`console.log('inline script')`)
+		res = zaxFiles.loadScripts(`console.log('inline script')`) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			console.log('log:inline script', info)
@@ -81,7 +81,7 @@ describe('zaxFiles', () => {
 
 		// reset
 		document.documentElement.innerHTML = html.toString()
-		let res = zaxFiles.loadStyles(['../__mocks__/a.css', '../__mocks__/b.css'], { before: document.getElementById('box') })
+		let res = zaxFiles.loadStyles(['../__mocks__/a.css', '../__mocks__/b.css'], { before: document.getElementById('box') }) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			expect(info).toBeTruthy()
@@ -97,7 +97,7 @@ describe('zaxFiles', () => {
 			attrs: {
 				id: 'myStyle'
 			}
-		})
+		}) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			expect(info).toBeTruthy()
@@ -113,7 +113,7 @@ describe('zaxFiles', () => {
 			attrs: {
 				id: 'myStyle'
 			}
-		})
+		}) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			expect(info).toBeTruthy()
@@ -127,7 +127,7 @@ describe('zaxFiles', () => {
 		res = zaxFiles.loadStyles(`.test-inline{margin:10px;}`, {
 			media: 'all',
 			before: document.getElementById('box')
-		})
+		}) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			expect(info).toBeTruthy()
@@ -140,7 +140,7 @@ describe('zaxFiles', () => {
 		document.documentElement.innerHTML = html.toString()
 		res = zaxFiles.loadStyles(`.test-inline{margin:10px;}`, {
 			before: document.getElementById('box')
-		})
+		}) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			expect(info).toBeTruthy()
@@ -151,7 +151,7 @@ describe('zaxFiles', () => {
 
 		// reset
 		document.documentElement.innerHTML = html.toString()
-		res = zaxFiles.loadStyles(`.test-inline{margin:10px;}`)
+		res = zaxFiles.loadStyles(`.test-inline{margin:10px;}`) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			expect(info).toBeTruthy()
@@ -167,7 +167,7 @@ describe('zaxFiles', () => {
 				foo: '1',
 				bar: '2'
 			}
-		})
+		}) as Promise<any>
 		expect(res).toBeInstanceOf(Promise)
 		res.then(info => {
 			expect(info).toBeTruthy()
@@ -180,17 +180,11 @@ describe('zaxFiles', () => {
 	it(`simulation server side `, () => {
 		Object.defineProperty(window, 'document', { value: undefined, configurable: true, writable: true })
 
-		let res = zaxFiles.loadScripts(['../__mocks__/a.js', '../__mocks__/b.js'])
-		expect(res).toBeInstanceOf(Promise)
-		res.catch(err => {
-			expect(err).toThrowError('env error')
-		})
+		let res = zaxFiles.loadScripts(['../__mocks__/a.js', '../__mocks__/b.js']) as void
+		expect(res).toBe(undefined)
 
-		let res2 = zaxFiles.loadStyles(['../__mocks__/a.css', '../__mocks__/b.css'])
-		expect(res2).toBeInstanceOf(Promise)
-		res2.catch(err => {
-			expect(err).toThrowError('env error')
-		})
+		let res2 = zaxFiles.loadStyles(['../__mocks__/a.css', '../__mocks__/b.css']) as void
+		expect(res2).toBe(undefined)
 	})
 })
 
